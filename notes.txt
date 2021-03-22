@@ -1,0 +1,47 @@
+###Inicio del proyecto - ClimaApp
+
+1. Empezamos creando nuestra aplicacion de node desde el terminal con el siguiente comando:
+
+``
+yarn init
+``
+
+2. Luego instalamos los siguientes paquetes:
+
+Colors & Inquirer
+
+``
+$ yarn add colors inquirer
+``
+
+3. En el `package.json` agregamos un script, start:
+
+```
+"scripts": {
+    "start": "node index.js"
+  },
+```
+
+Esto con la finalidad de poder ejecutar nuestro proyecto en el terminal
+con un simple `$ yarn start`
+
+4. Importamos un archivo llamado `inquirer.js` que se encontraba 
+en el curso, el cual va a tener ciertas funciones ya creadas
+previamente. (todo esto dentro de una carpeta llamada helpers)
+
+5. Por ultimo, en index.js, agregamos el siguiente codigo para probar que
+todo funciona correctamente:
+
+```
+    const { leerInput } = require('./helpers/inquirer.js')
+
+    const main = async (params) => {
+        const text = await leerInput('Hola ')
+
+        console.log(text);
+    };
+
+    main()
+```
+
+##Menu de la Aplicacion
