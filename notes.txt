@@ -45,3 +45,51 @@ todo funciona correctamente:
 ```
 
 ##Menu de la Aplicacion
+
+1. El menu ya esta creado gracias a la funciones anteriores en el archivo
+de inquirer, lo unico que hay que hacer el realizar lo siguiente:
+
+```
+const { leerInput, inquirerMenu, pausa } = require('./helpers/inquirer.js');
+
+const main = async () => {
+	let opt;
+
+	do {
+		opt = await inquirerMenu();
+
+		console.log({ opt });
+
+		await pausa();
+	} while (opt !== 0);
+};
+
+main();
+
+```
+
+2. En el archivo de inquirer, modificamos algunas cosas:
+
+```
+const preguntas = [
+	{
+		type: 'list',
+		name: 'opcion',
+		message: '¿Qué desea hacer?',
+		choices: [
+			{
+				value: 1,
+				name: `${'1.'.green} Buscar ciudad`,
+			},
+			{
+				value: 2,
+				name: `${'2.'.green} Historial`,
+			},
+			{
+				value: 0,
+				name: `${'0.'.green} Salir`,
+			},
+		],
+	},
+];
+```
