@@ -93,3 +93,56 @@ const preguntas = [
 	},
 ];
 ```
+
+###Modelo para controlar la aplicación
+
+1. Empezamos creando un modelo, llamado busquedas (esto dentro de una carpeta llamda models)
+
+``
+class Busquedas {
+    historial = ['Tegucigalpa', 'Madrid', 'Caracas']
+
+    constructor() {
+        // TODO: leer bd si existe
+    }
+
+    async ciudad( lugar = '') {
+        //peticion http
+
+        console.log(lugar);
+
+        return [] // retornar los lugares que coincidan
+    }
+}
+
+module.exports = Busquedas
+
+``
+
+2. Luego en index.js, cuando obtengamos la respuesta del usuario (mediante el menu que ya creamos),
+realizamos un switch:
+
+``
+switch (opt) {
+	case 1:
+		// Mostrar mensaje
+		const lugar = await leerInput('Ciudad: ');
+		console.log(lugar);
+
+		// Buscar los lugares
+
+		// Seleccionar el lugar
+
+		// Clima
+
+		// Mostrar resultados
+		console.log('Informacion del lugar\n'.green);
+		console.log('Ciudad: ');
+		console.log('Lat: ');
+		console.log('Lng: ');
+		console.log('Temperatura: ');
+		console.log('Minima: ');
+		console.log('Maxima: ');
+	break;
+}
+``
