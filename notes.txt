@@ -207,3 +207,41 @@ require('dotenv').config()
 ``
 'access_token': process.env.MAPBOX_KEY,
 ``
+
+##Listar los países de forma interactiva
+
+1. En nuestra busqueda.js retornamos:
+
+``
+return resp.data.features.map((f) => ({
+	id: f.id,
+	nombre: f.place_name,
+	lng: f.center[0],
+	lat: f.center[1]
+}));
+``
+
+Luego en index.js:
+
+```
+case 1:
+	// Mostrar mensaje
+	const termino = await leerInput('Ciudad: ');
+	// Buscar los lugares
+	const lugares = await busquedas.ciudad(termino);
+	//  Seleccionar lugar
+	const id = await listarLugares(lugares);
+	const lugarSel = lugares.find((l) => l.id === id);
+
+	// Clima
+
+	// Mostrar resultados
+	console.log('Informacion del lugar\n'.green);
+	console.log('Ciudad: ', lugarSel.nombre);
+	console.log('Lat: ', lugarSel.lat);
+	console.log('Lng: ', lugarSel.lng);
+	console.log('Temperatura: ');
+	console.log('Minima: ');
+	console.log('Maxima: ');
+	break;
+```
