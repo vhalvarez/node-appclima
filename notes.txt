@@ -187,3 +187,23 @@ async ciudad(lugar = '') {
 }
 
 ``
+
+##Variables de entorno
+
+1. Instalamos dotenv
+
+$ yarn add dotenv 
+
+2. Luego, lo llamamos al princimos de index.js
+
+``
+require('dotenv').config()
+``
+
+3. Modificamos el nombre de tokens.txt a .env con nuestro MAPBOX_KEY
+
+4. Luego, llamamos en busquedas.js la variable de etorno recien creada
+
+``
+'access_token': process.env.MAPBOX_KEY,
+``
