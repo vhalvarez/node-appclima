@@ -156,3 +156,34 @@ Instalamos axios y vimos un ejemplo de como se utiliza, no mas.
 Hicimos el inicio de sesion en las paginas de mapbox para lograr crear un token y luego a;adirlo 
 al api que nos da la pagina. Lo probamos en axios y listo.
 
+## Crear instancias de Axios
+
+1. En este video lo que hicimos fue crear una const llamada instance para crear la configuracion de axios
+
+``
+get paramsMapbox() {
+	return {
+		'access_token': 'pk.eyJ1IjoidmhhbHZhcmV6IiwiYSI6ImNrbW1iYTRhcDFkZjYyd3J3MTFndXVyYTUifQ.zc-k0IVILns7X7hiddl-OQ',
+		'limit': 5,
+		'languaje': 'es'
+	}
+}
+
+async ciudad(lugar = '') {
+	try {
+		//peticion http
+		const intance = axios.create({
+			baseURL: `https://api.mapbox.com/geocoding/v5/mapbox.places/${lugar}.json`,
+			params: this.paramsMapbox
+		})
+
+		const resp = await intance.get()
+
+		console.log(resp.data);
+		return []; // retornar los lugares que coincidan
+	} catch (error) {
+		return [];
+	}
+}
+
+``

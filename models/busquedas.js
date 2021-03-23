@@ -7,12 +7,23 @@ class Busquedas {
 		// TODO: leer bd si existe
 	}
 
+    get paramsMapbox() {
+        return {
+            'access_token': 'pk.eyJ1IjoidmhhbHZhcmV6IiwiYSI6ImNrbW1iYTRhcDFkZjYyd3J3MTFndXVyYTUifQ.zc-k0IVILns7X7hiddl-OQ',
+            'limit': 5,
+            'languaje': 'es'
+        }
+    }
+
 	async ciudad(lugar = '') {
 		try {
 			//peticion http
-			const resp = await axios.get(
-				'https://api.mapbox.com/geocoding/v5/mapbox.places/cARACAS.json?access_token=pk.eyJ1IjoidmhhbHZhcmV6IiwiYSI6ImNrbW1iYTRhcDFkZjYyd3J3MTFndXVyYTUifQ.zc-k0IVILns7X7hiddl-OQ&cachebuster=1616522031166&autocomplete=true&limit=1&language=es'
-			);
+            const intance = axios.create({
+                baseURL: `https://api.mapbox.com/geocoding/v5/mapbox.places/${lugar}.json`,
+                params: this.paramsMapbox
+            })
+
+            const resp = await intance.get()
 
 			console.log(resp.data);
 			return []; // retornar los lugares que coincidan
