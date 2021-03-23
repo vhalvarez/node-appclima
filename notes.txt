@@ -149,4 +149,10 @@ switch (opt) {
 
 ##Realizar peticiones HTTP desde Node
 
-1. Instalamos axios y vimos un ejemplo de como se utiliza, no mas.
+Instalamos axios y vimos un ejemplo de como se utiliza, no mas.
+
+## Mapbox Search API y Token de acceso
+
+Hicimos el inicio de sesion en las paginas de mapbox para lograr crear un token y luego a;adirlo 
+al api que nos da la pagina. Lo probamos en axios y listo.
+
