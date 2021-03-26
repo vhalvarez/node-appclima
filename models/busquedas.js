@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 class Busquedas {
-	historial = ['Tegucigalpa', 'Madrid', 'Caracas'];
+	historial = [];
 
 	constructor() {
 		// TODO: leer bd si existe
@@ -14,6 +14,7 @@ class Busquedas {
 			languaje: 'es',
 		};
 	}
+
 
 	async ciudad(lugar = '') {
 		try {
@@ -34,6 +35,41 @@ class Busquedas {
 		} catch (error) {
 			return [];
 		}
+	}
+
+	async climaLugar (lat = '', lon = '') {
+		try {
+			
+			//intance axios
+			const intance = axios.create({
+				baseURL: `https://api.openweathermap.org/data/2.5/weather`,
+				params: {
+					appid: process.env.OPENWEATHER_KEY,
+					lat: lat,
+					lon: lon,
+					lang: 'es'
+				}
+			});
+			//respuesta
+
+			const resp = await intance.get();
+
+
+			return {
+				desc: resp.data.weather[0].description,
+				min: resp.data.main.temp_min,
+				max: resp.data.main.temp_max,
+				temp: resp.data.main.temp
+			}
+
+		} catch (error) {
+			console.log(error);
+		}
+	}
+
+	agregarHistorial (lugar = ''){
+		this.historial.unshift( lugar )
+
 	}
 }
 
